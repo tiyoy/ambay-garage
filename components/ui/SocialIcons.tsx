@@ -18,7 +18,7 @@ const SOCIAL_LINKS: SocialLink[] = [
   },
   {
     label: "Facebook",
-    href: "https://www.facebook.com/rian.ardian.524",
+    href: "https://www.facebook.com/profile.php?id=100041041132973",
     icon: (
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
         <path d="M13.5 21v-8h2.7l.4-3.1h-3.1V8c0-.9.25-1.5 1.55-1.5H16.7V3.7C16.4 3.66 15.4 3.57 14.24 3.57c-2.4 0-4.04 1.46-4.04 4.15v2.17H7.5V13h2.7v8h3.3z" />
