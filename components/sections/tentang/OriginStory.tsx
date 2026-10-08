@@ -33,8 +33,8 @@ export default function OriginStory() {
               selain dari ide usaha berawal dari hobi inilah menjadikan bengkel
               ini lahir dengan tujuan membuat hasil karya motor custom handmade
               bergaya klasik modern dan restorasi motor lawas. Kami hadir
-              sebagai solusi kaum penggemar motor custom dengan tagline "Bangun
-              Motor wujudkan karakter!" dengan budget pelajar dan selalu
+              sebagai solusi kaum penggemar motor custom dengan tagline
+              &ldquo;Bangun Motor wujudkan karakter!&rdquo; dengan budget pelajar dan selalu
               berkomitmen untuk terus berkembang.
             </p>
           </RevealSection>

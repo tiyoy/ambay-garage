@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { SERVICES, type ConditionKey } from "@/lib/constants";
 
 const CONDITION_LABELS: Record<ConditionKey, string> = {
@@ -35,16 +35,14 @@ export default function EstimateCalculator() {
     [selectedService]
   );
 
-  // Keep the selected condition valid whenever the service changes
-  // (e.g. Pengecatan Custom has no "mangkrak" option).
-  useEffect(() => {
-    if (!availableConditions.includes(condition)) {
-      setCondition(availableConditions[0]);
-    }
-  }, [availableConditions, condition]);
+  // Derive a valid condition during render instead of syncing it in an
+  // effect (e.g. Pengecatan Custom has no "mangkrak" option).
+  const effectiveCondition = availableConditions.includes(condition)
+    ? condition
+    : (availableConditions[0] ?? "normal");
 
   const handleCalculate = () => {
-    const range = selectedService.estimate[condition];
+    const range = selectedService.estimate[effectiveCondition];
     if (!range) return;
 
     setResult(`${formatIDR(range.min)} — ${formatIDR(range.max)}`);
@@ -92,7 +90,7 @@ export default function EstimateCalculator() {
           <div className="relative">
             <select
               id="est-condition"
-              value={condition}
+              value={effectiveCondition}
               onChange={(e) => {
                 setCondition(e.target.value as ConditionKey);
                 setResult(null);

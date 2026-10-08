@@ -1,9 +1,8 @@
 "use client";
 
 import {
-  useEffect,
   useRef,
-  useState,
+  useSyncExternalStore,
   ElementType,
   ComponentPropsWithoutRef,
   Ref,
@@ -16,6 +15,10 @@ type RevealSectionProps<T extends ElementType> = {
   className?: string;
 } & Omit<ComponentPropsWithoutRef<T>, "as" | "children" | "className">;
 
+function subscribeNoop() {
+  return () => {};
+}
+
 export default function RevealSection<T extends ElementType = "div">({
   as,
   children,
@@ -24,15 +27,12 @@ export default function RevealSection<T extends ElementType = "div">({
 }: RevealSectionProps<T>) {
   const Tag = (as || "div") as ElementType;
   const ref = useRef<HTMLElement>(null);
-  const [mounted, setMounted] = useState(false);
+  // false saat SSR, true setelah hidrasi — tanpa setState di dalam effect.
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
   const isVisible = useRevealObserver(ref, {
     threshold: 0.15,
     rootMargin: "0px 0px -40px 0px",
   });
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
 
   return (
     <Tag

@@ -61,7 +61,7 @@ export default function ProjectHighlight() {
             tapi mempertahankan apa yang bikin dia spesial dengan gaya bratcafe
             berbalut warna cream. Tiap goresan dan detailnya jadi bagian dari
             cerita yang kita hidupkan lagi. Kenalin,{" "}
-            <strong>"BABUSKHA BOI"</strong>.
+            <strong>&ldquo;BABUSKHA BOI&rdquo;</strong>.
           </p>
 
           <div className="grid grid-cols-3 md:flex lg:flex-wrap gap-3 md:gap-8 mb-8 border-y border-steel-dim/20 py-6 w-full items-start">
